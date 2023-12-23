@@ -42,7 +42,7 @@ class UserInterface:
         print("> Ingredients:\n")
         is_done = False
         while not is_done:
-            ingredient = input("> Please enter an ingredient(enter 'done' or press 'Enter' to finish)")
+            ingredient = input("> Please enter an ingredient(enter 'done' or press 'Enter' to finish)\n")
             # Check whether the user enter 'done' or press 'Enter'
             if ingredient.lower() == 'done' or ingredient == '':
                 is_done = True
@@ -55,7 +55,7 @@ class UserInterface:
         print("> Instruction:\n")
         is_done = False
         while not is_done:
-            step = input("> Please enter one step (enter 'done' or press 'Enter' to finish)")
+            step = input("> Please enter one step (enter 'done' or press 'Enter' to finish)\n")
             # Check whether the user enter 'done' or press 'Enter'
             if step.lower() == 'done' or step == '':
                 is_done = True

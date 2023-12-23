@@ -17,8 +17,10 @@ class Recipe(ABC):
         print(f"|=====Instructions=====|\n{self.instruction}\n")
 
     @abstractmethod
-    def to_string(self):
-        pass
+    def __str__(self):
+        ingredient_str = ','.join(self.ingredients)
+        instruction_str = ','.join(self.instruction)
+        return f"{self.title} " + f"{ingredient_str} " + f"{instruction_str} "
 
 # Subclass for categroy: main course
 class MainCourse(Recipe):
@@ -30,9 +32,9 @@ class MainCourse(Recipe):
         super().display()
         print(f"|=====Protein Source=====|\n{self.protein}\n")
     
-    def to_string(self):
-        super().to_string()
-        return f"{self.category} {self.title} {self.ingredients} {self.instruction} {self.protein}"
+    def __str__(self):
+        basic_details = super().__str__()
+        return (f"{self.category} " + f"{basic_details}" + f"{self.protein}")
     
 
 
@@ -46,9 +48,9 @@ class SideDish(Recipe):
         super().display()
         print(f"|=====Approx Calories=====|\n{self.calorie}\n")
 
-    def to_string(self):
-        super().to_string()
-        return f"{self.category} {self.title} {self.ingredients} {self.instruction} {self.calorie}"
+    def __str__(self):
+        basic_details = super().__str__()
+        return (f"{self.category} " + f"{basic_details}" + f"{self.calorie}")
 
 # Subclass for categroy: dessert
 class Dessert(Recipe):
@@ -60,8 +62,8 @@ class Dessert(Recipe):
         super().display()
         print(f"|=====Sweetness Level=====|\n{self.sweetness_level}\n")
 
-    def to_string(self):
-        super().to_string()
-        return f"{self.category} {self.title} {self.ingredients} {self.instruction} {self.sweetness_level}"
+    def __str__(self):
+        basic_details = super().__str__()
+        return (f"{self.category} " + f"{basic_details}" + f"{self.sweetness_level}")
 
 

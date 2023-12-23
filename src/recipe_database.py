@@ -56,7 +56,7 @@ class RecipeDatabase:
             # Write with mode 'a' to avoid file overwritting.
             with open(file_path, 'a') as file:
                 for recipe in self.recipes:
-                    file.write(recipe.to_string())
+                    file.write(recipe.__str__())
                     file.write("\n")
         except FileNotFoundError:
             print("File Not Found!")
