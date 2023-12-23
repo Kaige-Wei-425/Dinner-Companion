@@ -50,3 +50,12 @@ class RecipeDatabase:
             if rcp.title == title:
                 self.recipes.remove(rcp)
 
+    # Output the recipe database to file
+    def file_output(self, file_path):
+        try:
+            with open(file_path, 'w') as file:
+                for recipe in self.recipes:
+                    file.write(recipe)
+        except FileNotFoundError:
+            print("File Not Found!")
+

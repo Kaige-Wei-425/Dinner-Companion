@@ -14,6 +14,9 @@ class DinnerCompainApp:
         self.running = True
 
     def run(self):
+        '''
+        run() is the function that control the primary logic of the app.
+        '''
         # The welcome message will print only once when run the program.
         print("===================================")
         print("*   Welcome to Dinner Companion   *")
@@ -78,6 +81,7 @@ class DinnerCompainApp:
                             recipe = MainCourse(title, ingredients, instruction, protein)
                             # Add it into the database
                             self.database.add_recipe(recipe)
+                            self.database.file_output('database.txt')
                         
                         # Add side dish
                         case 2:
