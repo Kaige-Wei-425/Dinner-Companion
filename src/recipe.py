@@ -12,18 +12,39 @@ class Recipe(ABC):
     # Abstract method must be denoted by non-abstract subclass
     @abstractmethod
     def display(self):
-        pass
+        print(f"|=====Title=====|\n{self.title}\n")
+        print(f"|=====Ingredients=====|\n{self.ingredients}\n")
+        print(f"|=====Instructions=====|\n{self.instruction}\n")
 
 # Subclass for categroy: main course
 class MainCourse(Recipe):
-    def __init__(self, title, ingredients, instruction):
+    def __init__(self, title, ingredients, instruction, protein):
         super().__init__(title, ingredients, instruction, "MainCourse")
+        self.protein = protein
 
     def display(self):
-        print(f"Title\n{self.title}\n")
-        print(f"Ingredients\n{self.ingredients}\n")
-        print(f"Instructions\n{self.instruction}\n")
+        super().display()
+        print(f"|=====Protein Source=====|\n{self.protein}\n")
 
 
-mai = MainCourse("chicken", "chicken, oil", "This is fried chicken!")
-mai.display()
+# Subclass for categroy: side dish
+class SideDish(Recipe):
+    def __init__(self, title, ingredients, instruction, calorie):
+        super().__init__(title, ingredients, instruction, "SideDish")
+        self.calorie = calorie
+
+    def display(self):
+        super().display()
+        print(f"|=====Approx Calories=====|\n{self.calorie}\n")
+
+# Subclass for categroy: dessert
+class Dessert(Recipe):
+    def __init__(self, title, ingredients, instruction, sweetness_level):
+        super().__init__(title, ingredients, instruction, "Dessert")
+        self.sweetness_level = sweetness_level
+
+    def display(self):
+        super().display()
+        print(f"|=====Sweetness Level=====|\n{self.sweetness_level}\n")
+
+
