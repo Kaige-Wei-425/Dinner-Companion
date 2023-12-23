@@ -50,14 +50,23 @@ class RecipeDatabase:
             if rcp.title == title:
                 self.recipes.remove(rcp)
 
-    # Output the recipe database to file
-    def file_output(self, file_path):
+    # Save the recipe collection into the file
+    def load_into_file(self, file_path):
         try:
-            # Write with mode 'a' to avoid the file overwritting.
+            # Write with mode 'a' to avoid file overwritting.
             with open(file_path, 'a') as file:
                 for recipe in self.recipes:
                     file.write(recipe.to_string())
                     file.write("\n")
+        except FileNotFoundError:
+            print("File Not Found!")
+    
+    # Load the recipes from the file
+    def load_from_file(self, file_path):
+        try:
+            with open(file_path, 'r') as file:
+                for line in file:
+                    self.add_recipe(line)
         except FileNotFoundError:
             print("File Not Found!")
 

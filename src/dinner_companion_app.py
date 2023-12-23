@@ -63,6 +63,9 @@ class DinnerCompainApp:
                 
 
     def add_rcp(self):
+        '''
+        This is the primary function for adding recipe to the database and output them to the file
+        '''
         is_add = True
         while is_add:
             try:
@@ -81,7 +84,6 @@ class DinnerCompainApp:
                             recipe = MainCourse(title, ingredients, instruction, protein)
                             # Add it into the database
                             self.database.add_recipe(recipe)
-                            self.database.file_output('database.txt')
                         
                         # Add side dish
                         case 2:
@@ -90,7 +92,7 @@ class DinnerCompainApp:
                             recipe = SideDish(title, ingredients, instruction, calorie)
                             # Add it into the database
                             self.database.add_recipe(recipe)
-                        
+               
                         # Add dessert
                         case 3:
                             title, ingredients, instruction, sweetness_level = self.ui.prompt_dessert()
@@ -98,7 +100,10 @@ class DinnerCompainApp:
                             recipe = Dessert(title, ingredients, instruction, sweetness_level)
                             # Add it into the database
                             self.database.add_recipe(recipe)
+
                         case 4:
+                            # Output all the recipes into the database before exit this menu
+                            self.database.load_into_file('database.txt')
                             is_add = False
                 else:
                     print("\n*****************************************")

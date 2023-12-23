@@ -32,7 +32,7 @@ class MainCourse(Recipe):
     
     def to_string(self):
         super().to_string()
-        return f"{self.title}" + f"{self.ingredients} " + f"{self.instruction} " + f"{self.protein}"
+        return f"{self.category} {self.title} {self.ingredients} {self.instruction} {self.protein}"
     
 
 
@@ -48,7 +48,7 @@ class SideDish(Recipe):
 
     def to_string(self):
         super().to_string()
-        return f"{self.title}" + f"{self.ingredients} " + f"{self.instruction} " + f"{self.calorie}"
+        return f"{self.category} {self.title} {self.ingredients} {self.instruction} {self.calorie}"
 
 # Subclass for categroy: dessert
 class Dessert(Recipe):
@@ -62,6 +62,6 @@ class Dessert(Recipe):
 
     def to_string(self):
         super().to_string()
-        return f"{self.title}" + f"{self.ingredients} " + f"{self.instruction} " + f"{self.sweetness_level}"
+        return f"{self.category} {self.title} {self.ingredients} {self.instruction} {self.sweetness_level}"
 
 
