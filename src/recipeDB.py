@@ -33,10 +33,18 @@ class RecipeDatabase:
                 return None
         
     # Update functions
-    def update_ingredients(self, ingredients):
-        pass
+    def update_recipe(self, title, new_recipe):
+        for i, rcp in enumerate(self.recipes):
+            # Find the recipe that the user want to update by title
+            if rcp.title == title:
+                # Update the original recipe with the new recipe
+                self.recipes[i] = new_recipe
+                # Indicate the update was successful by returning true
+                return True
+        return False
+            
 
-    # Delete
+    # Delete recipe by title
     def delete_recipe(self, title):
         for rcp in self.recipes:
             if rcp.title == title:
