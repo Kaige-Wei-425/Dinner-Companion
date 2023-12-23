@@ -32,6 +32,13 @@ class RecipeDatabase:
             else:
                 return None
         
-    # Update
+    # Update functions
+    def update_ingredients(self, ingredients):
+        pass
 
     # Delete
+    def delete_recipe(self, title):
+        for rcp in self.recipes:
+            if rcp.title == title:
+                self.recipes.remove(rcp)
+
