@@ -5,9 +5,6 @@ class UserInterface:
 
     # Display the main menu
     def display_mainMenu(self):
-        print("===================================")
-        print("*   Welcome to Dinner Companion   *")
-        print("===================================")
         print("\nPlease select from the following options:\n")
         print("> 1. View All Recipes")
         print("> 2. Add Recipe")
