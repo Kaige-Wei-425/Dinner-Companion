@@ -53,9 +53,11 @@ class RecipeDatabase:
     # Output the recipe database to file
     def file_output(self, file_path):
         try:
-            with open(file_path, 'w') as file:
+            # Write with mode 'a' to avoid the file overwritting.
+            with open(file_path, 'a') as file:
                 for recipe in self.recipes:
-                    file.write(recipe)
+                    file.write(recipe.to_string())
+                    file.write("\n")
         except FileNotFoundError:
             print("File Not Found!")
 
