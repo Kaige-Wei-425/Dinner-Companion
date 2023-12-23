@@ -29,7 +29,3 @@ class UserInterface:
 
         return input(">_: ")
 
-ui = UserInterface()
-a = ui.display_mainMenu()
-a
-print(a)
