@@ -14,13 +14,24 @@ class RecipeDatabase:
     
     # 2. Search by title of the recipe
     def search_by_title(self, title):
-        return [recipe for recipe in self.recipes if recipe.title == title]
+        for rcp in self.recipes:
+            # Return the recipe if the input title can be found in the database
+            if rcp.title == title:
+                return rcp
+            # Otherwise, return None
+            else:
+                return None
     
     # 3. Search by ingredients
     def search_by_ingredients(self, ingredients):
-        return [recipe for recipe in self.recipes if ingredients in self.ingredients]
-    
-    
+        for rcp in self.recipes:
+            # Return the recipe if the input ingredients can be found in the database
+            if ingredients in rcp.ingredients:
+                return rcp
+            # Otherwise, return None
+            else:
+                return None
+        
     # Update
 
     # Delete
