@@ -36,12 +36,38 @@ class UserInterface:
 
         return input(">_: ")
     
+    # Prompt users enter several ingredients unitl they enter 'done' or press 'Enter'
+    def prompt_for_ingredients(self):
+        ingredients = []
+        print("> Ingredients:\n")
+        is_done = False
+        while not is_done:
+            ingredient = input("> Please enter an ingredient(enter 'done' or press 'Enter' to finish)")
+            # Check whether the user enter 'done' or press 'Enter'
+            if ingredient.lower() == 'done' or ingredient == '':
+                is_done = True
+            ingredients.append(ingredient)
+        return ingredients
+
+    # Prompt users enter step-by-step instructions unitl they enter 'done' or press 'Enter'
+    def prompt_for_instructions(self):
+        instructions = []
+        print("> Instruction:\n")
+        is_done = False
+        while not is_done:
+            step = input("> Please enter one step (enter 'done' or press 'Enter' to finish)")
+            # Check whether the user enter 'done' or press 'Enter'
+            if step.lower() == 'done' or step == '':
+                is_done = True
+            instructions.append(step)
+        return instructions
+    
     # Prompt user enter the main course
     def prompt_main_course(self):
         print("Please enter the details of the recipe")
         title = input("> Title:\n")
-        ingredients = input("> Ingredients:\n")
-        instruction = input("> Instruction:\n")
+        ingredients = self.prompt_for_ingredients()
+        instruction = self.prompt_for_instructions()
         protein = input("> Protein:\n")
 
         return title, ingredients, instruction, protein
@@ -50,8 +76,8 @@ class UserInterface:
     def prompt_side_dish(self):
         print("Please enter the details of the recipe")
         title = input("> Title:\n")
-        ingredients = input("> Ingredients:\n")
-        instruction = input("> Instruction:\n")
+        ingredients = self.prompt_for_ingredients()
+        instruction = self.prompt_for_instructions()
         calorie = input("> Calorie:\n")
 
         return title, ingredients, instruction, calorie
@@ -60,8 +86,8 @@ class UserInterface:
     def prompt_dessert(self):
         print("Please enter the details of the recipe")
         title = input("> Title:\n")
-        ingredients = input("> Ingredients:\n")
-        instruction = input("> Instruction:\n")
+        ingredients = self.prompt_for_ingredients()
+        instruction = self.prompt_for_instructions()
         sweetness_level = input("> Sweetness Level:\n")
 
         return title, ingredients, instruction, sweetness_level

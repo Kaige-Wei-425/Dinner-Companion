@@ -11,6 +11,13 @@ class DinnerCompainApp:
     def __init__(self):
         self.ui = UserInterface()
         self.database = RecipeDatabase()
+        # Load the database from the file when initialize the app.
+        try:
+            self.database.load_from_file('database.txt')
+            print("Database Loaded Successfully")
+        except Exception as e:
+            print(f"Unable to Load the Database: {e}")
+
         self.running = True
 
     def run(self):
