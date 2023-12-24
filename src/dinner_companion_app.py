@@ -144,15 +144,19 @@ class DinnerCompainApp:
                                         match cate:
                                             # Main Course
                                             case 1:
-                                                search_by_cate = self.database.search_by_category("MainCourse")
-                                                for rcp in search_by_cate:
+                                                mainCourse = self.database.search_by_category("MainCourse")
+                                                for rcp in mainCourse:
                                                     rcp.display()
                                             # Side Dish
                                             case 2:
-                                                pass
+                                                sideDish = self.database.search_by_category("SideDish")
+                                                for rcp in sideDish:
+                                                    rcp.display()
                                             # Dessert
                                             case 3:
-                                                pass
+                                                dessert = self.database.search_by_category("Dessert")
+                                                for rcp in dessert:
+                                                    rcp.display()
                                             case 4:
                                                 is_done = True
                                     else:
