@@ -6,7 +6,7 @@ from data_validator import DataValidator
 
 # Import other libraries
 
-class DinnerCompainApp:
+class DinnerCompanionApp:
     
     def __init__(self):
         self.ui = UserInterface()
@@ -238,5 +238,5 @@ class DinnerCompainApp:
 
 # Entry point of the app
 if __name__ == "__main__":
-    app = DinnerCompainApp()
+    app = DinnerCompanionApp()
     app.run()
