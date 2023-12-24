@@ -163,9 +163,18 @@ class DinnerCompainApp:
                                         print("\n*****************************************")
                                         print("* Please choose your option from 1 to 4!*")
                                         print("*****************************************\n")
-                            
+                        
+                        # Search by title    
                         case 2:
-                            pass
+                            # The input title from user. The recipe they want to search
+                            ipt_title = self.ui.prompt_search_by_title()
+                            if_exist = self.database.search_by_title(ipt_title)
+                            if if_exist == None:
+                                print("Recipe not found!")
+                            else:
+                                if_exist.display()
+                        
+                        # Search by ingredients
                         case 3:
                             pass
                         # Back to the menu

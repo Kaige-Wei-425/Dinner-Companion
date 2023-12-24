@@ -17,7 +17,7 @@ class RecipeDatabase:
     def search_by_title(self, title):
         for rcp in self.recipes:
             # Return the recipe if the input title can be found in the database
-            if rcp.title == title:
+            if rcp.title.lower() == title.lower():
                 return rcp
             # Otherwise, return None
             else:

@@ -102,3 +102,12 @@ class UserInterface:
         print("> 4. Back --> ")
 
         return input(">_: ")
+    
+    # Prompt user enter the title of the recipe they want to search
+    def prompt_search_by_title(self):
+        print("Please enter the title of the recipe")
+
+        return input(">_: ")
+
+    def prompt_update_recipe(self):
+        pass
