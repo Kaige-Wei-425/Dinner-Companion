@@ -42,7 +42,7 @@ class DinnerCompainApp:
                     match choice:
                         # View all recipes
                         case 1:
-                            print("1")
+                            self.database.print_all_recipes()
 
                         # Add recipe
                         case 2:
@@ -67,7 +67,6 @@ class DinnerCompainApp:
                     print("\n*****************************************")
                     print("* Please choose your option from 1 to 6!*")
                     print("*****************************************\n")
-                
 
     def add_rcp(self):
         '''

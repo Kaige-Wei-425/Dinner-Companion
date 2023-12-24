@@ -18,6 +18,7 @@ class Recipe(ABC):
 
     @abstractmethod
     def __str__(self):
+        # Handle the list variable ingredients and instructions
         ingredient_str = ','.join(self.ingredients)
         instruction_str = ','.join(self.instruction)
         return f"{self.title} " + f"{ingredient_str} " + f"{instruction_str} "

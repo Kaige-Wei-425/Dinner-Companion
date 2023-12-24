@@ -1,3 +1,4 @@
+from recipe import *
 # This class manages the collections of the recipes
 class RecipeDatabase:
     def __init__(self):
@@ -53,20 +54,44 @@ class RecipeDatabase:
     # Save the recipe collection into the file
     def load_into_file(self, file_path):
         try:
-            # Write with mode 'a' to avoid file overwritting.
-            with open(file_path, 'a') as file:
+            with open(file_path, 'w') as file:
                 for recipe in self.recipes:
                     file.write(recipe.__str__())
                     file.write("\n")
         except FileNotFoundError:
             print("File Not Found!")
     
+    # 
+    def parse_line_to_recipe(line):
+        portions = line.strip().split(' ')
+
+
     # Load the recipes from the file
     def load_from_file(self, file_path):
         try:
             with open(file_path, 'r') as file:
                 for line in file:
-                    self.add_recipe(line)
+                    if line[0] == "MainCourse":
+                        title = line[1]
+                        ingredients = line[2].strip().split(',')
+                        instruction = line[3].strip().split(',')
+                        protein = line[4]
+                        self.recipes.append(MainCourse(title, ingredients, instruction, protein))
+
+                    if line[0] == "SideDish":
+                        title = line[1]
+                        ingredients = line[2].strip().split(',')
+                        instruction = line[3].strip().split(',')
+                        calorie = line[4]
+                        self.recipes.append(SideDish(title, ingredients, instruction, calorie))
+
+                    if line[0] == "Dessert":
+                        title = line[1]
+                        ingredients = line[2].strip().split(',')
+                        instruction = line[3].strip().split(',')
+                        sweetness_level = line[4]
+                        self.recipes.append(Dessert(title, ingredients, instruction, sweetness_level))
+
         except FileNotFoundError:
             print("File Not Found!")
 
