@@ -50,7 +50,7 @@ class DinnerCompainApp:
                         
                         # Search recipe
                         case 3:
-                            pass
+                            self.search_recipe()
                         
                         # Update recipe
                         case 4:
@@ -73,8 +73,8 @@ class DinnerCompainApp:
         '''
         This is the primary function for adding recipe to the database and output them to the file
         '''
-        is_add = True
-        while is_add:
+        is_add = False
+        while not is_add:
             try:
                 choice = int(self.ui.display_category())
             except ValueError:
@@ -111,12 +111,66 @@ class DinnerCompainApp:
                         case 4:
                             # Output all the recipes into the database before exit this menu
                             self.database.load_into_file('database.txt')
-                            is_add = False
+                            is_add = True
                 else:
                     print("\n*****************************************")
                     print("* Please choose your option from 1 to 4!*")
                     print("*****************************************\n")
-
+    
+    def search_recipe(self):
+        is_searched = False
+        while not is_searched:
+            try:
+                choice = int(self.ui.display_searchMenu())
+            except ValueError:
+                print("\n******************************************")
+                print("* Invalid input! Please enter a integer! *")
+                print("******************************************\n")
+            else:
+                if DataValidator.is_valid_int(choice, 1, 4):
+                    match choice:
+                        # Search by Categories
+                        case 1:
+                            is_done = False
+                            while not is_done:
+                                try:
+                                    cate = int(self.ui.prompt_search_by_category())
+                                except ValueError:
+                                    print("\n******************************************")
+                                    print("* Invalid input! Please enter a integer! *")
+                                    print("******************************************\n")
+                                else:
+                                    if DataValidator.is_valid_int(choice, 1, 4):
+                                        match cate:
+                                            # Main Course
+                                            case 1:
+                                                search_by_cate = self.database.search_by_category("MainCourse")
+                                                for rcp in search_by_cate:
+                                                    rcp.display()
+                                            # Side Dish
+                                            case 2:
+                                                pass
+                                            # Dessert
+                                            case 3:
+                                                pass
+                                            case 4:
+                                                is_done = True
+                                    else:
+                                        print("\n*****************************************")
+                                        print("* Please choose your option from 1 to 4!*")
+                                        print("*****************************************\n")
+                            
+                        case 2:
+                            pass
+                        case 3:
+                            pass
+                        # Back to the menu
+                        case 4:
+                            is_searched = True
+                else:
+                    print("\n*****************************************")
+                    print("* Please choose your option from 1 to 4!*")
+                    print("*****************************************\n")
 
 # Entry point of the app
 if __name__ == "__main__":

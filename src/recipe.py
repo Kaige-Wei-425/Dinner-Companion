@@ -14,6 +14,7 @@ class Recipe(ABC):
     def display(self):
         print(f"|=====Title=====|\n{self.title}\n")
         print(f"|=====Ingredients=====|")
+        # For ingredients and instructions, print each element in a line
         for igd in self.ingredients:
             print(igd)
         print(f"|=====Instructions=====|")

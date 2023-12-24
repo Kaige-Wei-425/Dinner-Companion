@@ -97,10 +97,9 @@ class RecipeDatabase:
         except FileNotFoundError:
             print("File Not Found!")
 
+    # View all recipes in the database collection
     def print_all_recipes(self):
         for rcp in self.recipes:
             rcp.display()
 
-# rpd = RecipeDatabase()
-# rpd.load_from_file('database.txt')
-# rpd.print_all_recipes()
+

@@ -23,6 +23,7 @@ class UserInterface:
         print("> 1. Search by Category")
         print("> 2. Search by Title")
         print("> 3. Search by Ingredients")
+        print("> 4. Back to Main Menu --> ")
 
         return input(">_: ")
 
@@ -91,3 +92,13 @@ class UserInterface:
         sweetness_level = input("> Sweetness Level:\n")
 
         return title, ingredients, instruction, sweetness_level
+    
+    # Prompt user search from the existing categories
+    def prompt_search_by_category(self):
+        print("Please select which type of dinner your want to search?")
+        print("> 1. Main Course")
+        print("> 2. Side Dish")
+        print("> 3. Dessert")
+        print("> 4. Back --> ")
+
+        return input(">_: ")
