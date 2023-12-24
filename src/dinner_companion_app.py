@@ -54,7 +54,7 @@ class DinnerCompainApp:
                         
                         # Update recipe
                         case 4:
-                            pass
+                            self.update_recipe()
                         
                         # Delete recipe
                         case 5:
@@ -190,6 +190,42 @@ class DinnerCompainApp:
                     print("\n*****************************************")
                     print("* Please choose your option from 1 to 4!*")
                     print("*****************************************\n")
+
+    def update_recipe(self):
+        # Prompt and collect the user input title. This is the title of recipe that the user want to update
+        original_title = self.ui.prompt_update_recipe()
+        original_recipe = self.database.search_by_title(original_title)
+        if original_recipe == None:
+            print("Recipe not found!")
+        else:
+        
+            # Check the category of the recipe so that can create the respond object
+            if original_recipe.category == "MainCourse":
+                title, ingredients, instruction, protein = self.ui.prompt_main_course()
+                new_recipe = MainCourse(title, ingredients, instruction, protein)
+                # Prompt user if the recipe is update successfully
+                if self.database.update_recipe(original_title, new_recipe):
+                    # Update the database after updating the recipe
+                    self.database.load_into_file('database.txt')
+                    print("Recipe updated successfully!")
+
+            if original_recipe.category == "SideDish":
+                title, ingredients, instruction, calorie = self.ui.prompt_side_dish()
+                new_recipe = SideDish(title, ingredients, instruction, calorie)
+                # Same as above
+                if self.database.update_recipe(original_title, new_recipe):
+                    self.database.load_into_file('database.txt')
+                    print("Recipe updated successfully!")
+
+            if original_recipe.category == "Dessert":
+                title, ingredients, instruction, sweetness_level = self.ui.prompt_dessert()
+                recipe = Dessert(title, ingredients, instruction, sweetness_level)
+                # Same as above
+                if self.database.update_recipe(original_title, new_recipe):
+                    self.database.load_into_file('database.txt')
+                    print("Recipe updated successfully!")
+
+        
 
 # Entry point of the app
 if __name__ == "__main__":

@@ -19,9 +19,7 @@ class RecipeDatabase:
             # Return the recipe if the input title can be found in the database
             if rcp.title.lower() == title.lower():
                 return rcp
-            # Otherwise, return None
-            else:
-                return None
+        return None
     
     # 3. Search by ingredients
     def search_by_ingredients(self, ingredients):
