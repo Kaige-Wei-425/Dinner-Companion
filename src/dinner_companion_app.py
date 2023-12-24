@@ -68,6 +68,7 @@ class DinnerCompainApp:
                     print("* Please choose your option from 1 to 6!*")
                     print("*****************************************\n")
 
+
     def add_rcp(self):
         '''
         This is the primary function for adding recipe to the database and output them to the file

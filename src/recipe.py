@@ -13,15 +13,19 @@ class Recipe(ABC):
     @abstractmethod
     def display(self):
         print(f"|=====Title=====|\n{self.title}\n")
-        print(f"|=====Ingredients=====|\n{self.ingredients}\n")
-        print(f"|=====Instructions=====|\n{self.instruction}\n")
+        print(f"|=====Ingredients=====|")
+        for igd in self.ingredients:
+            print(igd)
+        print(f"|=====Instructions=====|")
+        for ist in self.instruction:
+            print(ist)
 
     @abstractmethod
     def __str__(self):
         # Handle the list variable ingredients and instructions
         ingredient_str = ','.join(self.ingredients)
         instruction_str = ','.join(self.instruction)
-        return f"{self.title} " + f"{ingredient_str} " + f"{instruction_str} "
+        return f"{self.title}=" + f"{ingredient_str}=" + f"{instruction_str}="
 
 # Subclass for categroy: main course
 class MainCourse(Recipe):
@@ -35,7 +39,7 @@ class MainCourse(Recipe):
     
     def __str__(self):
         basic_details = super().__str__()
-        return (f"{self.category} " + f"{basic_details}" + f"{self.protein}")
+        return (f"{self.category}=" + f"{basic_details}" + f"{self.protein}")
     
 
 
@@ -51,7 +55,7 @@ class SideDish(Recipe):
 
     def __str__(self):
         basic_details = super().__str__()
-        return (f"{self.category} " + f"{basic_details}" + f"{self.calorie}")
+        return (f"{self.category}=" + f"{basic_details}" + f"{self.calorie}")
 
 # Subclass for categroy: dessert
 class Dessert(Recipe):
@@ -65,6 +69,6 @@ class Dessert(Recipe):
 
     def __str__(self):
         basic_details = super().__str__()
-        return (f"{self.category} " + f"{basic_details}" + f"{self.sweetness_level}")
+        return (f"{self.category}=" + f"{basic_details}" + f"{self.sweetness_level}")
 
 

@@ -70,28 +70,37 @@ class RecipeDatabase:
     def load_from_file(self, file_path):
         try:
             with open(file_path, 'r') as file:
+                # Convert the loading data into recipe objects
                 for line in file:
-                    if line[0] == "MainCourse":
-                        title = line[1]
-                        ingredients = line[2].strip().split(',')
-                        instruction = line[3].strip().split(',')
-                        protein = line[4]
-                        self.recipes.append(MainCourse(title, ingredients, instruction, protein))
+                    portions = line.strip().split('=')
+                    if portions[0] == "MainCourse":
+                        title = portions[1]
+                        ingredients = portions[2].strip().split(',')
+                        instruction = portions[3].strip().split(',')
+                        protein = portions[4]
+                        self.add_recipe(MainCourse(title, ingredients, instruction, protein))
 
-                    if line[0] == "SideDish":
-                        title = line[1]
-                        ingredients = line[2].strip().split(',')
-                        instruction = line[3].strip().split(',')
-                        calorie = line[4]
-                        self.recipes.append(SideDish(title, ingredients, instruction, calorie))
+                    if portions[0] == "SideDish":
+                        title = portions[1]
+                        ingredients = portions[2].strip().split(',')
+                        instruction = portions[3].strip().split(',')
+                        calorie = portions[4]
+                        self.add_recipe(SideDish(title, ingredients, instruction, calorie))
 
-                    if line[0] == "Dessert":
-                        title = line[1]
-                        ingredients = line[2].strip().split(',')
-                        instruction = line[3].strip().split(',')
-                        sweetness_level = line[4]
-                        self.recipes.append(Dessert(title, ingredients, instruction, sweetness_level))
+                    if portions[0] == "Dessert":
+                        title = portions[1]
+                        ingredients = portions[2].strip().split(',')
+                        instruction = portions[3].strip().split(',')
+                        sweetness_level = portions[4]
+                        self.add_recipe(Dessert(title, ingredients, instruction, sweetness_level))
 
         except FileNotFoundError:
             print("File Not Found!")
 
+    def print_all_recipes(self):
+        for rcp in self.recipes:
+            rcp.display()
+
+# rpd = RecipeDatabase()
+# rpd.load_from_file('database.txt')
+# rpd.print_all_recipes()
