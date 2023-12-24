@@ -46,7 +46,7 @@ class RecipeDatabase:
     # Delete recipe by title
     def delete_recipe(self, title):
         for rcp in self.recipes:
-            if rcp.title == title:
+            if rcp.title.lower() == title.lower():
                 self.recipes.remove(rcp)
 
     # Save the recipe collection into the file

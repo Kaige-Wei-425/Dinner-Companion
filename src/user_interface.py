@@ -120,3 +120,9 @@ class UserInterface:
         print("Enter the title of the recipe you want to update")
 
         return input(">_: ")
+    
+    # Prompt user enter the title of the recipe they want to delete
+    def prompt_delete_recipe(self):
+        print("Enter the title of the recipe you want to delete")
+
+        return input(">_: ")

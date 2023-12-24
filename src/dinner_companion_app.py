@@ -58,7 +58,7 @@ class DinnerCompainApp:
                         
                         # Delete recipe
                         case 5:
-                            pass
+                            self.delete_recipe()
                         
                         # Exit the app
                         case 6:
@@ -225,7 +225,16 @@ class DinnerCompainApp:
                     self.database.load_into_file('database.txt')
                     print("Recipe updated successfully!")
 
-        
+    def delete_recipe(self):
+        rcp_title = self.ui.prompt_delete_recipe()
+        del_rcp = self.database.search_by_title(rcp_title)
+        if del_rcp == None:
+            print("Recipe Not Found!")
+        else:
+            self.database.delete_recipe(rcp_title)
+            self.database.load_into_file('database.txt')
+            print("Recipe has been deleted!")
+
 
 # Entry point of the app
 if __name__ == "__main__":
