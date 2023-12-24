@@ -168,15 +168,21 @@ class DinnerCompainApp:
                         case 2:
                             # The input title from user. The recipe they want to search
                             ipt_title = self.ui.prompt_search_by_title()
-                            if_exist = self.database.search_by_title(ipt_title)
-                            if if_exist == None:
+                            is_exist = self.database.search_by_title(ipt_title)
+                            if is_exist == None:
                                 print("Recipe not found!")
                             else:
-                                if_exist.display()
+                                is_exist.display()
                         
                         # Search by ingredients
                         case 3:
-                            pass
+                            ipt_tgd = self.ui.prompt_search_by_ingredient()
+                            # Check the available recipe by the given ingredient
+                            ava_rcp = self.database.search_by_ingredients(ipt_tgd)
+                            if ava_rcp == None:
+                                print("There are no recipe avaiable based on your input ingredient")
+                            else:
+                                ava_rcp.display()
                         # Back to the menu
                         case 4:
                             is_searched = True

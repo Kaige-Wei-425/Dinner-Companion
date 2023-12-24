@@ -109,5 +109,10 @@ class UserInterface:
 
         return input(">_: ")
 
+    def prompt_search_by_ingredient(self):
+        print("Please enter the ingrediet you have")
+        
+        return input(">_: ")
+    
     def prompt_update_recipe(self):
         pass
